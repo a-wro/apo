@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Biletomat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+<script>
+function changeLang(lang) {
+    const translations = {
+        label: {
+            PL: 'język',
+            DE: 'sprach',
+            EN: 'language',
+        },
+        0: {
+            PL: '<p>NORMALNY</p>15 MINUT<p>2,40 ZŁ</p>',
+            DE: '<p>NORMAL</p>15 MINUTEN<p>2,40 ZŁ</p>',
+            EN: '<p>NORMAL</p></p>15 MINUTES<p>2,40 ZŁ</p>'
+        },
+        1: {
+            PL: '<p>ULGOWY</p>15 MINUT<p>1,20 ZŁ</p>',
+            DE: '<p>ERMÄßIGT</p>15 MINUTEN<p>1,20 ZŁ</p>',
+            EN: '<p>REDUCED-FARE</p></p>15 MINUTES<p>1,20 ZŁ</p>'
+        },
+        2: {
+            PL: '<p>NORMALNY</p>30 MINUT<p>3,00 ZŁ</p>',
+            DE: '<p>NORMAL</p>30 MINUTEN<p>3,00 ZŁ</p>',
+            EN: '<p>NORMAL</p></p>30 MINUTES<p>3,00 ZŁ</p>'
+        },
+        3: {
+            PL: '<p>ULGOWY</p>30 MINUT<p>1,50 ZŁ</p>',
+            DE: '<p>ERMÄßIGT</p>30 MINUTEN<p>1,50 ZŁ</p>',
+            EN: '<p>REDUCED-FARE</p></p>30 MINUTES<p>1,50 ZŁ</p>'
+        },
+        4: {
+            PL: '<p>NORMALNY</p>1 GODZINA<p>4,40 ZŁ</p>',
+            DE: '<p>NORMAL</p>1 STUNDE<p>4,40 ZŁ</p>',
+            EN: '<p>NORMAL</p></p>1 HOUR<p>4,40 ZŁ</p>'
+        },
+        5: {
+            PL: '<p>ULGOWY</p>1 GODZINA<p>2,20 ZŁ</p>',
+            DE: '<p>ERMÄßIGT</p>1 STUNDE<p>2,20 ZŁ</p>',
+            EN: '<p>REDUCED-FARE</p></p>1 HOUR<p>2,20 ZŁ</p>'
+        },
+        6: {
+            PL: '<p>NORMALNY</p>CAŁODOBOWY<p>12,00 ZŁ</p>',
+            DE: '<p>NORMAL</p>24-STUNDEN<p>12,00 ZŁ</p>',
+            EN: '<p>NORMAL</p></p>24-HOUR<p>12,00 ZŁ</p>'
+        },
+        7: {
+            PL: '<p>ULGOWY</p>CAŁODOBOWY<p>6,00 ZŁ</p>',
+            DE: '<p>ERMÄßIGT</p><p>24-STUNDEN</p><p>6,00 ZŁ</p>',
+            EN: '<p>REDUCED-FARE</p></p>24-HOUR<p>6,00 ZŁ</p>'
+        },
+        8: {
+            PL: 'KUP',
+            DE: 'KAUF',
+            EN: 'BUY',
+        }
+    }
+
+    document.getElementsByClassName('selectLabel')[0].innerHTML = translations['label'][lang]
+    let buttons = document.getElementsByTagName('button')
+    buttons = Array.from(buttons)
+    buttons.forEach((btn, i) => {
+        btn.innerHTML = translations[i][lang]
+    })
+ }
+ </script>
+ <style>
+ html {
+    text-transform: uppercase;
+}
+
+.screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+.langPicker {
+    font-size: 20px;
+}
+
+.selectLabel {
+    font-size: 30px;
+}
+
+.large {
+    width: 20rem;
+    height: 12rem;
+    margin: 0.5rem;
+    font-size: 20px;
+}
+
+.wide {
+    width: 41rem;
+    font-size: 36px;
+}
+</style>
+<body>
+    <div class="screen">
+        <label class="selectLabel">JĘZYK</label>
+        <div class="langPicker">
+            <form class="custom-control custom-radio">
+                <input onclick="changeLang('PL')" class="custom-control-input" checked id="pl" name="lang" type="radio"/>
+                <label for="pl">PL</label>
+                <input onclick="changeLang('EN')" id="en" name="lang" type="radio"/>
+                <label for="en">EN</label>
+                <input onclick="changeLang('DE')" id="de" name="lang" type="radio"/>
+                <label for="de">DE</label>
+            </form>
+        </div>
+        <div>
+            <span>
+                <button class="btn btn-info large"><p>ULGOWY</p>15 MINUT<p>1,20 ZŁ</p></button>
+                <button class="btn btn-info large"><p>NORMALNY</p>15 MINUT<p>2,40 ZŁ</p></button>
+            </span>
+        </div>
+        <div>
+            <span>
+                <button class="btn btn-info large"><p>ULGOWY</p>30 MINUT<p>2,20 ZŁ</p></button>
+                <button class="btn btn-info large"><p>NORMALNY</p>30 MINUT<p>4,40 ZŁ</p></button>
+            </span>
+        </div>
+        <div>
+            <span>
+                <button class="btn btn-info large"><p>ULGOWY</p>1 GODZINA<p>3,00 ZŁ</p></button>
+                <button class="btn btn-info large"><p>NORMALNY</p>1 GODZINA<p>6,00 ZŁ</p></button>
+            </span>
+        </div>
+        <div>
+            <span>
+                <button class="btn btn-info large"><p>ULGOWY</p>CAŁODOBOWY<p>6,00 ZŁ</p></button>
+                <button class="btn btn-info large"><p>NORMALNY</p>CAŁODOBOWY<p>12,00 ZŁ</p></button>
+            </span>
+        </div>
+        <div class="buyBtn">
+            <button class="btn btn-info large wide"> KUP </button>
+        </div>
+</div>
+</body>
+</html>
